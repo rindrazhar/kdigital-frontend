@@ -69,7 +69,7 @@ export default {
   background-color: dodgerblue;
   color: white;
   padding: 1rem;
-  height: 8rem;
+  height: 10rem;
 }
 
 .wrap__cards {

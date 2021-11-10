@@ -6,6 +6,17 @@
       <p>Author Url: {{ story.url }}</p>
       <p>By: {{ story.by }}</p>
       <p>{{ millisToDay(story.time) }}</p>
+
+      <div class="wrap__favorite">
+        <span>
+          <a href="#" v-if="isFavorited" @click.prevent="">
+            <mdicon name="bookmark" />
+          </a>
+          <a href="#" v-else @click.prevent="">
+            <mdicon name="bookmark" />
+          </a>
+        </span>
+      </div>
     </div>
     <div class="wrap__top__comment">
       <h2>Comments :</h2>
@@ -36,6 +47,7 @@ export default {
       story: {},
       comments: [],
       load: false,
+      isFavorited: "",
     };
   },
 
@@ -124,6 +136,14 @@ export default {
 .wrap__top {
   text-align: center;
   color: black;
+}
+
+.wrap__favorite .button__yellow {
+  background-color: yellow;
+}
+
+.wrap__favorite .button__grey {
+  background-color: grey;
 }
 
 .wrap__top__comment {
