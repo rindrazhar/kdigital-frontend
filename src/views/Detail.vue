@@ -6,7 +6,9 @@
       <p>By: {{ story.by }}</p>
       <p>{{ millisToDay(story.time) }}</p>
     </div>
-    <h2>Comments :</h2>
+    <div class="wrap__top__comment">
+      <h2>Comments :</h2>
+    </div>
     <div v-for="comment in comments" :key="comment.id">
       <div class="comment__wrap">
         <div class="comment__block">
@@ -91,7 +93,8 @@ export default {
 
 .comment__block {
   padding: 1rem;
-  background-color: #fff;
+  background-color: dodgerblue;
+  color: white;
   display: table-cell;
   vertical-align: top;
   border-radius: 0.1875rem;
@@ -109,7 +112,7 @@ export default {
 }
 
 .bottom__comment {
-  color: #acb4c2;
+  color: white;
   font-size: 0.875rem;
 }
 
@@ -119,5 +122,10 @@ export default {
 
 .wrap__top {
   text-align: center;
+  color: black;
+}
+
+.wrap__top__comment {
+    color: black;
 }
 </style>
