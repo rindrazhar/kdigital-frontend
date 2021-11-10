@@ -1,9 +1,12 @@
 <template>
   <div class="container">
-    <span v-if="load">Loading...</span>
-    <h2>{{ story.title }}</h2>
-    <p>By: {{ story.by }}</p>
-    <p>{{ millisToDay(story.time) }}</p>
+    <div class="wrap__top">
+      <span v-if="load">Loading...</span>
+      <h2>{{ story.title }}</h2>
+      <p>By: {{ story.by }}</p>
+      <p>{{ millisToDay(story.time) }}</p>
+    </div>
+    <h2>Comments :</h2>
     <div v-for="comment in comments" :key="comment.id">
       <div class="comment__wrap">
         <div class="comment__block">
@@ -112,5 +115,9 @@ export default {
 
 .comment__date {
   float: left;
+}
+
+.wrap__top {
+  text-align: center;
 }
 </style>

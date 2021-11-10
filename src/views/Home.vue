@@ -1,12 +1,17 @@
 <template>
   <div>
     <span v-if="load">Loading...</span>
-    <div v-for="story in stories" :key="story.id">
-      <router-link :to="{ path: '/story/' + story.data.id }">
-        <h2>{{ story.data.title }}</h2>
-      </router-link>
-      <p>Score: {{ story.data.score }}</p>
-      <p>{{ story.data.descendants }} comments</p>
+    <div class="wrap__cards">
+      <div class="cards" v-for="story in stories" :key="story.id">
+        <router-link
+          class="wrap__title"
+          :to="{ path: '/story/' + story.data.id }"
+        >
+          <h2>{{ story.data.title }}</h2>
+        </router-link>
+        <p>Score: {{ story.data.score }}</p>
+        <p>{{ story.data.descendants }} comments</p>
+      </div>
     </div>
   </div>
 </template>
@@ -59,4 +64,43 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.cards {
+  background-color: dodgerblue;
+  color: white;
+  padding: 1rem;
+  height: 8rem;
+}
+
+.wrap__cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-gap: 3rem;
+}
+
+.wrap__cards .wrap__title {
+  text-decoration: none;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+
+  .wrap__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+
+  .wrap__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+</style>

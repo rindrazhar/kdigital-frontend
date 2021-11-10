@@ -53,8 +53,8 @@ body {
 }
 
 #nav h1 {
-  text-align: center;
-  color: lightblue;
+  /* text-align: center; */
+  color: black;
 }
 
 #nav .wrap__text {
