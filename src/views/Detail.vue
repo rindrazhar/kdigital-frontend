@@ -3,6 +3,7 @@
     <div class="wrap__top">
       <span v-if="load">Loading...</span>
       <h2>{{ story.title }}</h2>
+      <p>Author Url: {{ story.url }}</p>
       <p>By: {{ story.by }}</p>
       <p>{{ millisToDay(story.time) }}</p>
     </div>
@@ -49,7 +50,7 @@ export default {
         )
         .then((res) => {
           this.story = res.data;
-          //  console.log(this.story);
+          console.log(this.story);
           this.story.comments = [];
           this.load = false;
           this.story.kids.forEach((id) => {
@@ -126,6 +127,6 @@ export default {
 }
 
 .wrap__top__comment {
-    color: black;
+  color: black;
 }
 </style>
