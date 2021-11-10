@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <span v-if="load">Loading...</span>
     <h2>{{ story.title }}</h2>
     <p>By: {{ story.by }}</p>
     <p>{{ millisToDay(story.time) }}</p>
@@ -28,11 +29,13 @@ export default {
     return {
       story: {},
       comments: [],
+      load: false,
     };
   },
 
   methods: {
     getDetailNews() {
+      this.load = true;
       axios
         .get(
           "https://hacker-news.firebaseio.com/v0/item/" +
@@ -43,12 +46,15 @@ export default {
           this.story = res.data;
           //  console.log(this.story);
           this.story.comments = [];
+          this.load = false;
           this.story.kids.forEach((id) => {
+            this.load = true;
             axios
               .get("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
               .then((res) => {
                 // console.log(res.data);
                 this.comments.push(res.data);
+                this.load = false;
               })
               .catch((err) => {
                 console.log(err);

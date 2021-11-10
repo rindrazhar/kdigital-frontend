@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span v-if="load">Loading...</span>
     <div v-for="story in stories" :key="story.id">
       <router-link :to="{ path: '/story/' + story.data.id }">
         <h2>{{ story.data.title }}</h2>
@@ -20,11 +21,13 @@ export default {
     return {
       err: "",
       stories: [],
+      load: false,
     };
   },
 
   methods: {
     getDataTopNews() {
+      this.load = true;
       axios
         .get("https://hacker-news.firebaseio.com/v0/topstories.json")
         .then((res) => {
@@ -37,6 +40,7 @@ export default {
               .then((res) => {
                 this.stories.push(res);
                 // console.log(this.stories);
+                this.load = false;
               })
               .catch((err) => {
                 console.log(err);
