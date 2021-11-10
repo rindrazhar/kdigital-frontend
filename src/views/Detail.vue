@@ -87,8 +87,6 @@ export default {
 <style>
 .comment__wrap {
   margin-bottom: 1.25rem;
-  display: table;
-  width: 100%;
   min-height: 5.3125rem;
 }
 
@@ -96,7 +94,9 @@ export default {
   padding: 1rem;
   background-color: dodgerblue;
   color: white;
-  display: table-cell;
+  display: grid;
+  margin: 0 auto;
+  max-width: 1200px;
   vertical-align: top;
   border-radius: 0.1875rem;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
@@ -128,5 +128,17 @@ export default {
 
 .wrap__top__comment {
   color: black;
+}
+
+@media (min-width: 768px) {
+  .comment__wrap {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .comment__wrap {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 </style>
